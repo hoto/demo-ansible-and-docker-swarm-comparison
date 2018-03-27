@@ -1,0 +1,25 @@
+version: '3.6'
+
+services:
+
+  nginx1:
+    image: nginx
+    container_name: nginx_container1
+    networks:
+      my_private_network:
+        ipv4_address: 172.20.128.2
+
+  nginx2:
+    image: nginx
+    container_name: nginx_container2
+    networks:
+      my_private_network:
+        ipv4_address: 172.20.128.3
+
+networks:
+
+  my_private_network:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
